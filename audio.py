@@ -1,0 +1,20 @@
+import sqlite3
+
+conn = sqlite3.connect('test4.db')
+cursor = conn.cursor()
+cursor.execute('CREATE TABLE IF NOT EXISTS students (id INT, second_name TEXT, name TEXT, god_rozdeniya TEXT, pol TEXT, faculty INT)')
+cursor.execute('''INSERT INTO students (id, second_name, name, god_rozdeniya, pol, faculty)VALUES (0, 'ismoil', 'postolenko', 2011, 'female', 'CF') ''')
+cursor.execute('''INSERT INTO students (id, second_name, name, god_rozdeniya, pol, faculty)VALUES (2, 'denis', 'denisov', 2012, 'female', 'CF')''')
+cursor.execute('''INSERT INTO students (id, second_name, name, god_rozdeniya, pol, faculty)VALUES (1, 'sasha', 'ayubhonov', 2013, 'male', 'BF')''')
+cursor.execute('''INSERT INTO students (id, second_name, name, god_rozdeniya, pol, faculty)VALUES (2, 'akim','kravchenko', 2001, 'male', 'CF')''')
+cursor.execute('''INSERT INTO students (id, second_name, name, god_rozdeniya, pol, faculty)VALUES (1, 'mardon', 'ataev', 20010, 'male', 'BF')''')
+#cursor.execute('''UPDATE students SET grade = 5 WHERE id = 1''')
+cursor.execute('''SELECT * FROM students''')
+cursor.execute('''SELECT * FROM students ORDER BY name''')
+#cursor.execute('''DELETE FROM students''')
+result = cursor.fetchall()
+rows = cursor.fetchall()
+for row in rows:
+    print(row)
+print(len(result))
+conn.commit()
